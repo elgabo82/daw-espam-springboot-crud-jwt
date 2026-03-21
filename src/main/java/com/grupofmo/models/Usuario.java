@@ -77,6 +77,16 @@ public class Usuario implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+	@Override
+	public @Nullable String getPassword() {
+		return clave;
+	}
+
+	@Override
+	public String getUsername() {
+		return nombreUsuario;
+	}
 	
 
 }
