@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 
 /*
  * DAW-ESPAM - 2026
- * Clase: Usuario (DTO)
+ * Clase: Usuario (Modelo)
  * Gabriel Morejón
  */
 
