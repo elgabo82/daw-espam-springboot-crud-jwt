@@ -8,5 +8,5 @@ package com.grupofmo.models;
 
 public enum Rol {
 	ADMIN,
-	USER
+	USUARIO
 }
