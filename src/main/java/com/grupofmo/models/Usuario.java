@@ -35,58 +35,43 @@ import lombok.NoArgsConstructor;
 @Table(name = "usuarios")
 @Data
 public class Usuario implements UserDetails {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column(name = "nombres", nullable = false, length = 120)
-	private String nombresCompletos;
-	
-	@Column(name = "usuario", nullable = false, length = 60, unique = true)
-	private String nombreUsuario;
-	
-	@JsonIgnore
-	@Column(nullable = false)
-	private String clave;
-	
-	@Enumerated(EnumType.STRING)
-	@Column(nullable = false, length = 20)
-	private Rol rol;
+    private static final long serialVersionUID = 1L;
 
-	@Override
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "nombres", nullable = false, length = 120)
+    private String nombresCompletos;
+
+    @Column(name = "usuario", nullable = false, length = 60, unique = true)
+    private String nombreUsuario;
+
+    @JsonIgnore
+    @Column(nullable = false)
+    private String clave;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private Rol rol;
+
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROL_" + rol.name()));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + rol.name()));
     }
 
     @Override
-    public boolean isAccountNonExpired() {
-        return true;
+    public String getPassword() {
+        return clave;
     }
 
     @Override
-    public boolean isAccountNonLocked() {
-        return true;
+    public String getUsername() {
+        return nombreUsuario;
     }
 
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-
-	@Override
-	public @Nullable String getPassword() {
-		return clave;
-	}
-
-	@Override
-	public String getUsername() {
-		return nombreUsuario;
-	}
-	
-
+    @Override public boolean isAccountNonExpired() { return true; }
+    @Override public boolean isAccountNonLocked() { return true; }
+    @Override public boolean isCredentialsNonExpired() { return true; }
+    @Override public boolean isEnabled() { return true; }
 }
