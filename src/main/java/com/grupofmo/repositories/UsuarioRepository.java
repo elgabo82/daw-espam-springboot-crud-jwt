@@ -14,5 +14,5 @@ import com.grupofmo.models.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	Optional<Usuario> findByNombreUsuario(String nombreUsuario);
-	boolean existsByNombreUsuario(String nombreusuario);
+	boolean existsByNombreUsuario(String nombreUsuario);
 }

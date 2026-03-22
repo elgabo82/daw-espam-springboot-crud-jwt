@@ -18,7 +18,7 @@ public class InitialDataConfig {
             if (!usuarioRepository.existsByNombreUsuario("admin")) {
                 Usuario admin = new Usuario();
                 admin.setNombresCompletos("Administrador");
-                admin.setNombreUsuario("admin");
+                admin.setNombreUsuario(null);
                 admin.setClave(passwordEncoder.encode("Clave.2026"));
                 admin.setRol(Rol.ADMIN);
                 usuarioRepository.save(admin);
